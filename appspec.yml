@@ -2,33 +2,18 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ubuntu/app/
+    destination: /
     overwrite: yes
-permissions:
-  - object: /home/ubuntu/app/codedeploy
-    pattern: "*.sh"
-    owner: root
-    mode: 775
-    type:
-      - file
 hooks:
   beforeinstall:
-    - location: codedeploy/before_install.sh
+    - location: scripts/before_install.sh
       runas: root
       timeout: 300
-  AfterInstall:
-    - location: codedeploy/after_install.sh
+  Applicationstop:
+    - location: scripts/application_stop.sh
       runas: root
       timeout: 300
-  ApplicationStart:
-    - location: codedeploy/app_start.sh
+ApplicationStart:
+    - location: scripts/application_start.sh
       runas: root
       timeout: 60
-  Applicationstop:
-    - location: codedeploy/app_stop.sh
-      runas: root
-      timeout: 300
-  ValidateService:
-    - location: codedeploy/validate_service.sh
-      runas: root
-      timeout: 300
