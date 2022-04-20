@@ -5,7 +5,7 @@ files:
     destination: /
     overwrite: yes
 hooks:
-  BeforeInstall:
+ BeforeInstall:
     - location: scripts/before_install.sh
       runas: root
       timeout: 300
